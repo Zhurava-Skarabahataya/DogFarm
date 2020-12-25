@@ -1,0 +1,7 @@
+Vladimir, Petrov, veterinarian
+Zosya, Smith, veterinarian
+Pavel, Fedorov, trainer
+Dmitry, Sidorov, driver
+Timofey, Sokolov, worker
+Anna, Titova, worker
+Piotr, Pervy, worker
