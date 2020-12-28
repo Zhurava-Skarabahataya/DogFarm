@@ -6,12 +6,6 @@ import by.zhurava.dog_farm.util.printer.Printer;
 
 public class Trainer extends Employee{
 
-	@Override
-	public void work() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void trainPuppy(Puppy puppy) {
 		
 		puppy.setTrained(true);

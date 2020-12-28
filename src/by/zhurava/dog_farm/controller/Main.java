@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		DogFarm dogFarm = DogFarm.getInstance();
+		DogFarmController dogFarm = DogFarmController.getInstance();
 		
 		dogFarm.function();
 

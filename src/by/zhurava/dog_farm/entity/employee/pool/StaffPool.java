@@ -68,8 +68,6 @@ public class StaffPool {
 		}
 
 	}
-	
-	
 
 	public Queue<Employee> getFreeWorkers() {
 		return freeWorkers;
@@ -87,7 +85,8 @@ public class StaffPool {
 				Thread.sleep(10000);
 				veterinarian = freeVeterenarians.poll();
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+
+				throw new RuntimeException("The thread was interrupted.", e);
 			}
 		}
 
@@ -111,7 +110,8 @@ public class StaffPool {
 				Thread.sleep(10000);
 				worker = freeWorkers.poll();
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+
+				throw new RuntimeException("The thread was interrupted.", e);
 			}
 		}
 
@@ -123,7 +123,7 @@ public class StaffPool {
 
 		freeWorkers.add(worker);
 	}
-	
+
 	public Employee getFreeDriver() {
 
 		Employee driver;
@@ -136,7 +136,7 @@ public class StaffPool {
 				Thread.sleep(10000);
 				driver = freeDrivers.poll();
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				throw new RuntimeException("The thread was interrupted.", e);
 			}
 		}
 
@@ -148,7 +148,7 @@ public class StaffPool {
 
 		freeDrivers.add(driver);
 	}
-	
+
 	public Employee getFreeTrainer() {
 
 		Employee trainer;
@@ -161,7 +161,8 @@ public class StaffPool {
 				Thread.sleep(10000);
 				trainer = freeDrivers.poll();
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				
+				throw new RuntimeException("The thread was interrupted.", e);
 			}
 		}
 

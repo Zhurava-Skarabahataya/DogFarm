@@ -7,12 +7,6 @@ import by.zhurava.dog_farm.util.printer.Printer;
 public class Veterenarian extends Employee implements Treating{
 
 	@Override
-	public void work() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void treatDog(Dog dog) {
 		
 		Printer printer = ConsolePrinter.getInstance();

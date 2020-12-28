@@ -4,7 +4,7 @@ public abstract class Employee {
 
 	private String firstName;
 	private String secondName;
-	
+
 	private Position position;
 
 	public String getFirstName() {
@@ -30,8 +30,6 @@ public abstract class Employee {
 	public void setPosition(Position position) {
 		this.position = position;
 	}
-	
-	public abstract void work();
 
 	@Override
 	public int hashCode() {
@@ -71,9 +69,5 @@ public abstract class Employee {
 	public String toString() {
 		return "Employee [firstName=" + firstName + ", secondName=" + secondName + ", position=" + position + "]";
 	}
-	
-	
-	
-	
-	
+
 }

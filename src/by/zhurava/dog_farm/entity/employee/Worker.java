@@ -8,12 +8,6 @@ import by.zhurava.dog_farm.util.printer.Printer;
 public class Worker extends Employee implements Feeding, Cleaning {
 
 	@Override
-	public void work() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void feedDog(Dog dog) {
 
 		dog.setHungry(false);

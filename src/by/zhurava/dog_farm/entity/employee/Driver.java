@@ -6,12 +6,6 @@ import by.zhurava.dog_farm.util.printer.Printer;
 
 public class Driver extends Employee{
 
-	@Override
-	public void work() {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	public void driveDogToWork(Dog dog){
 		
 		Printer printer = ConsolePrinter.getInstance();

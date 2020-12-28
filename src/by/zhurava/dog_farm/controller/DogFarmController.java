@@ -12,34 +12,52 @@ import by.zhurava.dog_farm.entity.employee.pool.StaffPool;
 import by.zhurava.dog_farm.util.printer.ConsolePrinter;
 import by.zhurava.dog_farm.util.printer.Printer;
 
-public class DogFarm {
+public class DogFarmController {
 
-	private static final DogFarm instance = new DogFarm();
-	
+	private static final DogFarmController instance = new DogFarmController();
+
 	private static final Printer printer = ConsolePrinter.getInstance();
 
-	private DogFarm() {
+	private DogFarmController() {
 
 	}
 
-	public static DogFarm getInstance() {
+	public static DogFarmController getInstance() {
 		return instance;
 	}
 
 	public void function() {
 
 		printer.printInfoFarmOpens();
-		
+
 		startNewDay();
 
 		mainActivity();
-		
+
 		printer.printFarmCloses();
 
 	}
 
+	private void startNewDay() {
+		bringWorkersToFarm();
+
+		wakeUpDogs();
+	}
+
+	private void bringWorkersToFarm() {
+		StaffPool staffPool = StaffPool.getInstance();
+
+		staffPool.initStaffPool();
+	}
+
+	private void wakeUpDogs() {
+		DogPool dogPool = DogPool.getInstance();
+
+		dogPool.initDogPool();
+	}
+
 	private void mainActivity() {
-		
+
 		feedDogs();
 
 		veterenarianCheckUp();
@@ -53,12 +71,12 @@ public class DogFarm {
 
 	private void dogActivity() {
 
-		List <Dog> dogs = DogPool.getInstance().getAllDogs();
-		
-		for (Dog dog :dogs) {
+		List<Dog> dogs = DogPool.getInstance().getAllDogs();
+
+		for (Dog dog : dogs) {
 			dog.doActivity();
 		}
-		
+
 	}
 
 	private void cleaning() {
@@ -66,74 +84,52 @@ public class DogFarm {
 		StaffPool staff = StaffPool.getInstance();
 
 		Queue<Employee> workers = staff.getFreeWorkers();
-		
+
 		for (Employee employee : workers) {
-			
+
 			Worker worker = (Worker) employee;
-			
+
 			worker.cleanCages();
 		}
-		
+
 	}
 
 	private void veterenarianCheckUp() {
 
-		List <Dog> dogsToTreat = DogPool.getInstance().getAllDogs();
-		
+		List<Dog> dogsToTreat = DogPool.getInstance().getAllDogs();
+
 		StaffPool staff = StaffPool.getInstance();
 
 		for (Dog dog : dogsToTreat) {
-			
+
 			Veterenarian veterenarian = (Veterenarian) staff.getFreeVeterenarian();
-			
+
 			veterenarian.treatDog(dog);
-			
+
 			staff.releaseVeterenarian(veterenarian);
-			
+
 		}
-		
+
 		printer.printAllDogsHealthy();
 
-		
 	}
 
 	private void feedDogs() {
-		
-		List <Dog> dogsToFeed = DogPool.getInstance().getAllDogs();
-		
+
+		List<Dog> dogsToFeed = DogPool.getInstance().getAllDogs();
+
 		StaffPool staff = StaffPool.getInstance();
-		
+
 		for (Dog hungryDog : dogsToFeed) {
-			
+
 			Worker worker = (Worker) staff.getFreeWorker();
-			
+
 			worker.feedDog(hungryDog);
-			
+
 			staff.releaseWorker(worker);
 		}
-		
+
 		printer.printInfoAllDogsAreFull();
-		
-	}
-
-	private void startNewDay() {
-
-		bringWorkersToFarm();
-		wakeUpDogs();
-
-	}
-
-	private void wakeUpDogs() {
-
-		DogPool dogPool = DogPool.getInstance();
-		dogPool.initDogPool();
-
-	}
-
-	private void bringWorkersToFarm() {
-
-		StaffPool staffPool = StaffPool.getInstance();
-		staffPool.initStaffPool();
 
 	}
 
